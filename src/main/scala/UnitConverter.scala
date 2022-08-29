@@ -16,7 +16,7 @@ class UnitConverterDefaultImpl(facts: => List[Fact]) extends UnitConverter {
         .toRight(ConversionFactDoesNotExist(query))
 
   @tailrec
-  protected final def queryFrom(table: => Map[String, Conversion])(query: UnitQuery): Option[QueryResult] =
+  private def queryFrom(table: => Map[String, Conversion])(query: UnitQuery): Option[QueryResult] =
     table.get(query.fromUnitType) match {
       case None =>
         None
