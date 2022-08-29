@@ -42,9 +42,9 @@ object UnitConversionSpec extends ZIOSpecDefault {
             Fact("hr", Conversion("min", 60)),
             Fact("min", Conversion("second", 60)),
             Fact("second", Conversion("ms", 1000)),
-            Fact("ms", Conversion("ns", 100_00_00)),
+            Fact("ms", Conversion("ns", 100_00_00))
           )
-        val forwardQuery = UnitQuery("decade", "ns", fromValue)
+        val forwardQuery  = UnitQuery("decade", "ns", fromValue)
         val forwardResult = UnitConverter(facts).convert(forwardQuery)
         val roundTrip = forwardResult.map(_.value).flatMap { res =>
           UnitConverter(facts).convert(UnitQuery("ns", "decade", res))
