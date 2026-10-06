@@ -33,12 +33,9 @@ The facts become two lookup tables, one for each direction, keyed by the unit be
 table, multiplying by each rate, until it reaches the target unit or runs out of facts. It tries the forward table
 first, then the backward one. Values are `BigDecimal`, so going backwards divides without losing much precision.
 
-That keeps it simple, with two limits:
-
-- Each unit can have only one conversion out of it in each direction. A second fact from the same unit replaces the
-  first.
-- A path can't mix directions. With facts hr to min and hr to day, there is no route from min to day, because that
-  needs one step backwards and one forwards.
+That keeps it simple, but it means the facts have to form a single chain. Each unit can have only one conversion out
+of it and one into it, and a later fact replaces an earlier one. With facts km to m and mile to m, there's no answer
+for km to mile, because that would mean going forwards to m and then backwards to mile.
 
 ## Running the tests
 
