@@ -9,13 +9,13 @@ on:
       - main
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: namespace-profile-mattjones372
     steps:
       - uses: actions/checkout@v2
       - name: Run tests
         run: sbt test
   lint:
-    runs-on: ubuntu-latest
+    runs-on: namespace-profile-mattjones372
     steps:
       - uses: actions/checkout@v2
       - name: Formatting
